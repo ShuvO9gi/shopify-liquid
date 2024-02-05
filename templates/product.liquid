@@ -8,9 +8,9 @@
     <select name="id">
         {% for variant in product.variants %}
             <option value={{variant.id}}>
-                {{variant.title}}
+                {{ variant.title }}
             </option>
         {% endfor %}
     </select>
-    <button type="submit">Add to Cart</button>
+    <button type="submit">{{ 'General.add_to_cart' | t }}</button>
 {% endform %}

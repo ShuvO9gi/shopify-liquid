@@ -4,7 +4,10 @@
     {{'style.css' | asset_url | stylesheet_tag}}
 </head>
 <body>
-    {% render 'header' %}
+    {% comment %} {% render 'header' %} {% endcomment %}
+    {% section 'header' %}
+    {% section 'not-found' %}
+    {% section 'featured-product' %}
     {{content_for_layout}}
     {{'scripts.js' | asset_url | script_tag}}
 </body>
