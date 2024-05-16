@@ -1,8 +1,7 @@
 <div>
     <a href="{{ product.url }}">
-        <img src="{{ product.featured_image | image_url: width: 400 }}" /> {% comment %} | image_tag: widths: '200, 300, 500' {% endcomment %}
-        <h3>{{ product.title }}</h3>
-        <p>{{ product.price | money }}</p>
+        <img src="{{ product.featured_image | image_url: width: 400, height: 400 }}">
     </a>
+    <h3>{{ product.title | link_to: product.url }}</h3>
+    <p>{{ product.price | money }}</p>
 </div>
-{% comment %} {{- product.title | link_to: product.url }} {% endcomment %}

@@ -5,13 +5,13 @@
       {
         "type": "color",
         "id": "bg",
-        "label": "Background color",
+        "label": "Background Color",
         "default": "#ffffff"
       },
       {
         "type": "color",
         "id": "text_color",
-        "label": "Text color",
+        "label": "Text Color",
         "default": "#000000"
       }
     ]
@@ -22,25 +22,8 @@
       {
         "type": "checkbox",
         "id": "show_search",
-        "label": "Show search form?",
+        "label": "Show Search Form?",
         "default": true
-      }
-    ]
-  },
-  {
-    "name": "Specialized",
-    "settings": [
-      {
-        "type": "collection_list",
-        "id": "collection_list",
-        "label": "Collections",
-        "limit": 8
-      },
-      {
-        "type": "product_list",
-        "id": "product_list",
-        "label": "Products",
-        "limit": 4
       }
     ]
   }

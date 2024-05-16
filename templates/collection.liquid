@@ -1,45 +1,49 @@
+<h1>Collection Template</h1>
+<p>Belongs to Catalog where all products are displayed</p>
 {% paginate collection.products by 4 %}
-
-    <h1>{{ collection.title }}</h1>
+    <h2>{{ collection.title }}</h2>
 
     <select id="sort-by">
         {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
         {% for option in collection.sort_options %}
-            <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
-            {{ option.name }}
+            <option value="{{ option.value }}" {% if option.value == sort_by %} selected="selected"{% endif %}>
+                {{ option.name }}
             </option>
         {% endfor %}
     </select>
 
     {% for product in collection.products %}
-        {% render 'product-item', product:product %}
+        {% render 'product-item', product: product %}
     {% endfor %}
-
-    {{- paginate | default_pagination }}
+	{{ paginate | default_pagination }}
 {% endpaginate %}
 
 <script>
-  Shopify.queryParams = {};
-
-  // Preserve existing query parameters
-  if (location.search.length) {
-    var params = location.search.substr(1).split('&');
-
-    for (var i = 0; i < params.length; i++) {
-      var keyValue = params[i].split('=');
-
-      if (keyValue.length) {
-        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+    Shopify.queryParams = {};
+  
+    // Preserve existing query parameters
+    if (location.search.length) {
+      var params = location.search.substr(1).split('&');
+      console.log(params);
+  
+      for (var i = 0; i < params.length; i++) {
+        var keyValue = params[i].split('=');
+        console.log(keyValue);
+  
+        if (keyValue.length) {
+          Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+        }
+        console.log(Shopify.queryParams);
       }
     }
-  }
-
-  // Update sort_by query parameter on select change
-  document.querySelector('#sort-by').addEventListener('change', function(e) {
-    var value = e.target.value;
-
-    Shopify.queryParams.sort_by = value;
-    location.search = new URLSearchParams(Shopify.queryParams).toString();
-  });
-</script>
+  
+    // Update sort_by query parameter on select change
+    document.querySelector('#sort-by').addEventListener('change', function(e) {
+      var value = e.target.value;
+  
+      Shopify.queryParams.sort_by = value;
+      location.search = new URLSearchParams(Shopify.queryParams).toString();
+      console.log(location.search);
+    });
+  </script>

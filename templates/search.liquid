@@ -1,21 +1,21 @@
 {% paginate search.results by 4 %}
 
-        {% if search.performed %}
-            <h1>Here's your results:</h1>
+    {% if search.performed %}
+        <h1>Here's your results:</h1>
 
-            {% for result in search.results %}
-                {% if result.object_type == "page" %}
-                    <a href="{{ result.url }}">{{ result.title }}</a>
-                {% elsif result.object_type == "article" %}
-                    <a href="{{ result.url }}">{{ result.title }}</a>
-                {% else %}
-                    <a href="{{ result.url }}">{{ result.title }}</a>
-                {% endif %}
-            {% endfor %}
+        {% for result in search.results %}
+            <h2>{{ result.title | link_to: result.url }}</h2>
+            {% if result.object_type == "page" %}
+                <a href="{{ result.url }}">{{ result.title }}</a>
+            {% elsif result.object_type == "article" %}
+                <a href="{{ result.url }}">{{ result.title }}</a>
+            {% else %}
+                <a href="{{ result.url }}">{{ result.title }}</a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h1>Try searching...</h1>
+    {% endif %}
 
-        {% else %}
-            <h1>Try search for something else...</h1>
-        {% endif %}
-
-    {{ paginate | default_paginaton }}
+{{- paginate | default_pagination }}
 {% endpaginate %}

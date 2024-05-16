@@ -1,14 +1,9 @@
 <html>
 <head>
-    {{content_for_header}}
-    {{'style.css' | asset_url | stylesheet_tag}}
+    {{ content_for_header }}
 </head>
 <body>
-    {% comment %} {% render 'header' %} {% endcomment %}
-    {% section 'header' %}
-    {% section 'not-found' %}
-    {% section 'featured-product' %}
-    {{content_for_layout}}
-    {{'scripts.js' | asset_url | script_tag}}
+    {%  render 'header' %}
+    {{ content_for_layout }}
 </body>
 </html>

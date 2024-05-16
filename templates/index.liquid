@@ -1,14 +1,7 @@
-{% comment %} <h1>Coding with SR Tech, Testing....</h1> {% endcomment %}
-{% comment %} {{'coding4.jpg' | asset_url}} {% endcomment %}
-{% comment %} <img src="{{'coding4.jpg' | asset_url}}" /> {% endcomment %}
-
-{% paginate collections['frontpage'].products by 4 %}
-
-        <h2>{{collections['frontpage'].title}}</h2>
-
-        {% for product in collections['frontpage'].products %}
-            {% render 'product-item', product:product %}
-        {% endfor %}
-
-    {{ paginate | default_pagination }}
-{% endpaginate %}
+<h1>Template Index Page</h1>
+<h2>{{ collections['frontpage'].title }}</h2>
+<div>
+    {% for product in collections['frontpage'].products %}
+        {% render 'product-item', product: product %}
+    {% endfor %}
+</div>
