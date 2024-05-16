@@ -8,5 +8,6 @@
             <option value={{ variant.id }}>{{ variant.title }}</option>
         {% endfor %}
     </select>
-    <button type="submit">Add to Cart</button>
+    {% comment %} <button type="submit">Add to Cart</button> {% endcomment %}
+    <button type="submit">{{ "General.add_to_cart" | t }}</button>
 {% endform %}
