@@ -1,5 +1,6 @@
 <h1>Collection Template</h1>
 <p>Belongs to Catalog where all products are displayed</p>
+{% assign paginatePadding = "20px" %}
 {% paginate collection.products by 4 %}
     <h2>{{ collection.title }}</h2>
 
@@ -13,11 +14,23 @@
         {% endfor %}
     </select>
 
-    {% for product in collection.products %}
+    <div class="product" style="margin-top: 10px">
+      {% for product in collection.products %}
         {% render 'product-item', product: product %}
-    {% endfor %}
-	{{ paginate | default_pagination }}
+      {% endfor %}
+    </div>
+    <div style="padding: {{ paginatePadding }}">
+      {{ paginate | default_pagination }}
+    </div>
 {% endpaginate %}
+
+{% comment %} <style>
+  .product {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style> {% endcomment %}
 
 <script>
     Shopify.queryParams = {};

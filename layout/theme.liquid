@@ -1,11 +1,14 @@
 <html>
 <head>
     {{ content_for_header }}
+    <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
 </head>
 <body>
     {% comment %} {%  render 'header' %} {% endcomment %}
     {% section 'header' %}
     {{ content_for_layout }}
+    {% section '2022-top' %}
+    
 </body>
 </html>
 
